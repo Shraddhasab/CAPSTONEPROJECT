@@ -1,39 +1,50 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit,SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { isEmpty } from 'rxjs';
-import { CartService } from 'shared/cart.service';
-import { IProduct } from '../Products/product';
+import { CartService } from '../shared/cart.service';
+
+import { IVeges } from '../veges/veges';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit{
-  //initialisation
-  prods:IProduct[]=[];
-  amt!:number;
-  title:string='cart';
-  constructor(private cartService:CartService,private router:Router){}
+export class CartComponent  implements OnInit{
+
+  pageTitle:string='Shopping cart';
+  public veges : IVeges[] = [];
+
+  public grandTotal !: number;
   
-  ngOnChanges(changes: SimpleChanges): void {}
-  
+  href: any;
+  price!: number;
+
+  constructor(private cartService : CartService,private router:Router) { }
+
+ 
+
   ngOnInit(): void {
-    this.cartService.getProds().subscribe(res=>{
-      this.prods=res;
-      this.amt=this.cartService.getTotalPrice();
-    });
+      this.href=this.router.url;
+      this.cartService.getVeges().subscribe(response=>{
+      this.veges = response;
+      this.grandTotal = this.cartService.getTotalPrice();
+      //this.price=this.cartService.vegPrice();
+    })
+
   }
-  
-  emptycart(){
+
+  emptyCart(){
+
     this.cartService.emptyCart();
+
+  }
+  removeVeges(veg:IVeges){
+    this.cartService.removeCartItem(veg);
   }
 
-  removeProd(p:IProduct){
-    this.cartService.removeCartItem(p);
+  checkOut():void{
+    console.log('in checkout');
+    this.router.navigate([this.href,'checkoutForm']);
   }
 
-  checkout(){
-    this.router.navigate(['payment']);
-  }
 }
