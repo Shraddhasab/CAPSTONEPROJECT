@@ -1,59 +1,70 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//components created
-import { AboutUsComponent } from './about-us/about-us.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PaymentComponent } from './payment/payment.component';
-import { RegisterComponent } from './register/register.component';
-import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './user/login.component';
-import { ProductsListComponent } from './Products/products-list.component';
-import { CartComponent } from './cart/cart.component';
-//needed modules
-import { CommonModule } from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
-import{ FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { MaterialModule } from './material-module/material-module.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VegesComponent } from './veges/veges.component';
+
+import { MatCardModule } from '@angular/material/card';
+import {  HttpClientModule ,HttpClient} from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { EffectsModule } from '@ngrx/effects';
+import { InMemoryEventDbService } from './shared/inmemoryeventdbservice';
+import { VegesModule } from './veges/veges.module';
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-//bootstrap
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProductAddComponent } from './Products/product-add.component';
-import { DbService } from 'shared/inmemoryeventdbservice';
-import { ProductEditComponent } from './Products/product-edit.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
+import { CommonModule } from '@angular/common';
+import { CartComponent } from './cart/cart.component';
+import { RouterModule } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { VegesService } from './shared/veges.service';
+import { CartService } from './shared/cart.service';
+import { CheckoutComponent } from './cart/checkout.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutUsComponent,
-    ContactUsComponent,
-    PageNotFoundComponent,
-    PaymentComponent,
-    RegisterComponent,
-    HomePageComponent,
     NavbarComponent,
+    HomeComponent,
+    AboutusComponent,
+    ContactusComponent,
     LoginComponent,
-    CartComponent,
-    ProductsListComponent,
-    ProductAddComponent,
-    ProductEditComponent
+    PagenotfoundComponent,
+    
+    
+    
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FormsModule,
-    CommonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatInputModule,
+    BrowserAnimationsModule,
     HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
-    HttpClientInMemoryWebApiModule.forRoot(DbService),
+    //RouterModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([AppEffects]),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryEventDbService)
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [HttpClientModule,HttpClient,StoreModule],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }
