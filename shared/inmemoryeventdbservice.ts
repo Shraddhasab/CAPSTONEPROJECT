@@ -1,48 +1,168 @@
-import { I18nPluralPipe } from "@angular/common";
 import { Injectable } from "@angular/core";
-import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
-import { Observable } from "rxjs";
-import { IProduct } from "src/app/Products/product";
+import { InMemoryDbService } from "angular-in-memory-web-api";
+
+import { Login } from "../login/login";
+import { IVeges } from "../veges/veges";
+
 
 @Injectable({
     providedIn:'root'
 })
+export class InMemoryEventDbService implements InMemoryDbService{
 
-export class DbService implements InMemoryDbService {
-    createDb(reqInfo?: RequestInfo | undefined): {} | Observable<{}> | Promise<{}> { 
-        let products: IProduct[]= [
+    createDb() {
+        /* const cart:Cart[]=[
+            {
+            "name":'tomato',
+            "category":'vegetables',
+            "image":'../assets/images/tom.jpeg',
+            "price":200,
+            "kg":0,
+            },
+            {
+                
+                "name":"Lady's finger",
+                "category":"vegetables",
+                "image":"../assets/images/lady.jpg",
+                "price":100,
+                "kg":0,
+            },
+            {
+                
+                "name":"Cabbage",
+                "category":"vegetables",
+                "image":"../assets/images/cab.jpeg",
+                "price":60,
+                "kg":0,
+            }, 
+            {
+                
+                "name":"Carrot",
+                "category":"vegetables",
+                "image":"../assets/images/car.jpeg",
+                "price":75,
+                "kg":0,
+            },
+            {
+                
+                "name":"Beans",
+                "category":"vegetables",
+                "image":"../assets/images/beans1.jpg",
+                "price":60,
+                "kg":0,
+            },
+            {
+                
+                "name":"Radish",
+                "category":"vegetables",
+                "image":"../assets/images/radish1.jpg",
+                "price":50,
+                "kg":0,
+            },
+            {
+                
+                "name":"Beetroot",
+                "category":"vegetables",
+                "image":"../assets/images/beetroot.jpg",
+                "price":80,
+                "kg":0,
+            },
+            {
+                
+                "name":"Brinjal",
+                "category":"vegetables",
+                "image":"../assets/images/brinjal.jpg",
+                "price":90,
+                "kg":0,
+            },
+
+        ] */
+        const users:Login[]=[
             {
                 "id":1,
-                "name":"Carrots",
-                "price":200,
-                "image": "../../assets/images/car.jpg"
-              },{
-                "id":2,
-                "name":"Cabbage",
-                "price":300,
-                "image": "../../assets/images/cab.jpeg"
-              },{
+                "username":'shraddha',
+                "password":'shraddha',
+                "isAdmin":true
+            },
+            {
+               "id":2,
+               "username":'user1',
+               "password":'user1',
+               "isAdmin":false
+            },
+            {
                 "id":3,
-                "name":"Onion",
-                "price":100,
-                "image": "../../assets/images/oni.jpg"
-              },{
+                "username":'user2',
+                "password":'user2',
+                "isAdmin":false
+            }
+        ]
+        const veges: IVeges[]=[
+            {
+            "id":1,
+            "name":"tomato",
+            "category":"vegetables",
+            "image":"../assets/images/tom.jpg",
+            "price":200
+            
+            },
+            {
+                "id":2,
+                "name":"Lady's finger",
+                "category":"vegetables",
+                "image":"../assets/images/lady.jpg",
+                "price":100
+                
+            },
+            {
+                "id":3,
+                "name":"Cabbage",
+                "category":"vegetables",
+                "image":"../assets/images/cab.jpeg",
+                "price":100
+                
+            }, 
+            {
                 "id":4,
-                "name":"Tomato",
-                "price":400,
-                "image": "../../assets/images/tom.jpg"
-              },{
+                "name":"Carrot",
+                "category":"vegetables",
+                "image":"../assets/images/car.jpg",
+                "price":100
+                
+            },
+            {
                 "id":5,
-                "name":"Potato",
-                "price":250,
-                "image": "../../assets/images/pot.jpg"
-              },{
+                "name":"Beans",
+                "category":"vegetables",
+                "image":"../assets/images/beans1.jpg",
+                "price":100
+                
+            },
+            {
                 "id":6,
-                "name":"Capsicum",
-                "price":350,
-                "image": "../../assets/images/caps.jpg"
-              }
-         ];
-        return {products};     
+                "name":"Radish",
+                "category":"vegetables",
+                "image":"../assets/images/radish1.jpg",
+                "price":100
+                
+            },
+            {
+                "id":7,
+                "name":"Beetroot",
+                "category":"vegetables",
+                "image":"../assets/images/beetroot.jpg",
+                "price":100
+                
+            },
+            {
+                "id":8,
+                "name":"Brinjal",
+                "category":"vegetables",
+                "image":"../assets/images/brinjal.jpg",
+                "price":100
+                
+            },
+        ];
+        return{veges,users};
+        }
     }
-}
