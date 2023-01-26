@@ -1,28 +1,30 @@
-<div class="card" style="width: 80%; margin: auto;">
+<div class="card" >
     <div class="card-header">
-        <h2>Cart List</h2>
+        {{pageTitle}}
     </div>
     <div class="card-body">
-        <div class="table-responsive">  
-            <table class="table ">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th></th>
-                </tr>
-                <tr *ngFor="let p of prods;let i=index">
-                    <td>{{i+1}}</td>
-                    <td>{{p.name}}</td>
-                    <td>{{p.price}}</td>
-                    <td>
-                        <button class="btn btn-warning" (click)="removeProd(p)">Remove</button>
-                    </td>
-                </tr>
-            </table>
-        </div><br>
-        <button class="btn btn-success" (click)="checkout()">Checkout</button>
-        <button class="btn btn-danger" style="margin-left: 5px;" (click)="emptycart()">Clear</button>
+    <div class="table-responsive">
+        <table *ngIf="veges.length" class="table">
+        <thead>
+            <th>Name</th>
+            <th>Category</th>
+           
+            <th>Kg</th>
+            <th>Price</th>
+        </thead>
+        <tbody *ngFor="let veg of veges">
+            <td>{{veg.name}}</td>
+            <td>{{veg.category}}</td>
+           
+            <td><input type="number" style="width:50px;" [(ngModel)]="veg.kg"/></td>
+            <td>{{veg.price}}</td>
+            
+            <button class="btn btn-primary" (click)="removeVeges(veg)">Delete</button>
+        </tbody>
+        </table>
     </div>
-    <h5 style="text-align: center;" id="mssg">Cart Amount: {{amt|currency:'INR'}}</h5>
+    <button class="btn-btn-success" (click)="checkOut()" >Check Out</button>
+    <button class="btn-btn-danger" (click)="emptyCart()">Clear cart</button>
+    </div>
+    <h5>Total Amount to be paid: {{grandTotal|currency:'INR'}}</h5>
 </div>
