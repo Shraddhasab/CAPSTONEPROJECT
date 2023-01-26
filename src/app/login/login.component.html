@@ -1,0 +1,31 @@
+<div class="col-lg-6 mb-5 mb-lg-0">
+<div class="card">
+<div class="card-body py-5 px-md-5">
+<form #loginForm="ngForm" >
+    <div class="form-group">
+    <p>
+    <mat-form-field >
+        <mat-label>UserName</mat-label>
+        <input class="form-control" matInput type="text" name="username" id="username" placeholder="Enter the Username" #username="ngModel" ngModel required>
+        
+        
+    </mat-form-field>
+   </p>
+   <p>
+    <mat-form-field >
+        <mat-label>Password</mat-label>
+        <input class="form-control" matInput type="text" name="password" id="password" placeholder="Enter your password" #password="ngModel" ngModel required>
+        
+    </mat-form-field>
+    </p>
+    <p>
+        <button type="submit" mat-raised-button-type color="primary" (click)="onSubmit(loginForm)" [disabled]="!loginForm.valid">Login</button>
+        <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+        
+    </p>
+</div>
+</form>
+</div>
+</div>
+</div>
+{{loginForm.valid}}
