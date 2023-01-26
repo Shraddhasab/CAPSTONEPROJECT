@@ -1,0 +1,25 @@
+<div class="card">
+<div class="card-header">
+{{title}}
+</div>
+  <div class="card-body">
+      
+        <form #checkoutForm="ngForm">
+            Pay using Debit or Credit Card
+            <label>Card Number:</label>
+            <input type="number" id=“cardNum” name="cardNum" #cardNum="ngModel" placeholder="###-###-###" ngModel required><br>
+            
+            <label>Expiry Date:</label>
+            <input type="date" id=“expDate” name="expDate" #expDate="ngModel" required ngModel><br>
+            
+            <label>CVV Number:</label>
+            <input type="number" id=“cvvNum” name="cvvNum" #cvvNum="ngModel" placeholder="xxx" ngModel required minlength="3" maxlength="3"><br>
+            
+            <label>Card Holder Name:</label>
+            <input type="text" id=“fullName” name="fullName" #fullName="ngModel" placeholder="enter your name" minlength="5" ngModel required><br>
+            <button type="submit" class="btn btn-success" [disabled]="!checkoutForm.valid" (click)="onSubmit(checkoutForm)">submit</button> 
+        </form>
+        <br><br>
+        <div style="height: 200px;"></div>
+</div>
+</div>
