@@ -1,0 +1,108 @@
+<!--  <div class="container">
+  <input type="text" (keypress)="filterData(c)" [(ngModel)]="c" class="filterP" id="filterP" name="filterP" placeholder="enter item name"><br>
+  <h3>filter by {{c}}</h3><br>
+  <table *ngIf="let veg of veges.length;else elseBlock" class="table table-striped" style="background-color: LightCyan;">
+      <thead>
+      <tr>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">category/th>
+          <th scope="col">Image</th>
+          <th scope="col">Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of filteredList;let i=index">
+          <td>{{i+1}}</td>
+          <td>{{p.name}}</td>
+          <td>{{p.price}}</td>
+          <td><img src="{{p.image}}" alt="no image"></td>
+          <td>
+              <button class="btn btn-secondary bg-dark" (click)="addToCart(p)">add to cart</button>
+              <button class="btn btn-danger" style="margin-left: 5px;" (click)="removeVeges(p)">Delete Veges</button>
+              <button class="btn btn-info" style="margin-left: 5px;" (click)="editVeges(p)">update/edit</button>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="newVeges()">Add Product</button>
+  <ng-template #elseBlock><h4 style="color: red; text-align: center;">no products</h4></ng-template>
+</div>
+<router-outlet></router-outlet>  --> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="bg-image shadow-2-strong" >
+   <input type="text" (keypress)="filterData(c)" [(ngModel)]="c" class="filterP" id="filterP" name="filterP" placeholder="enter item name"><br>
+  <h3>filter by {{c}}</h3><br>
+
+   <div class="container px-6"> 
+ <div class="row gx-6">    
+ <div class="card" *ngFor="let veg of veges"> 
+ <mat-card class="example-card"> 
+    <!-- <mat-card-header>
+      <div class="card-header">
+       <mat-card-title (click)="vegesSelected(veg)">{{veg.name}}</mat-card-title> 
+      </div>  
+      
+    </mat-card-header>  -->
+    <div class="card-body">
+    <!-- <mat-card-subtitle>{{veg.category}}</mat-card-subtitle><br> -->
+    <mat-card-title (click)="vegesSelected(veg)">{{veg.name}}</mat-card-title>
+    
+    <mat-card-subtitle>{{veg.category}}</mat-card-subtitle><br>
+     <img mat-card-image [src]="veg.image" class="w-75 rounded-4 shadow-4">    
+    
+     <mat-card-subtitle>Price:{{veg.price}}</mat-card-subtitle><br>
+     <td><input type="number" style="width: 100px;" [(NgModel)]="veges"></td>  
+     <mat-card-actions>   
+      <button class="btn btn-secondary bg-dark" (click)="addToCart(veg)">add</button>
+              <button class="btn btn-danger" style="margin-left: 2px;" (click)="removeVeges(veg)">Delete</button>
+              <button class="btn btn-info" style="margin-left: 2px;" (click)="editVeges(veg)">update</button>
+      
+     </mat-card-actions>   
+     </div>
+    
+   </mat-card>  
+    </div>  
+</div>  
+<button class="btn btn-primary" (click)="newVeges()">Add Veges</button>
+  <ng-template #elseBlock><h4 style="color: red; text-align: center;">No Veges</h4></ng-template>
+<!-- <br><br><button  class="btn btn-primary" (click)="newVeges()">Add Veges</button> -->
+
+
+
+ </div>    
+
+<router-outlet></router-outlet>   
