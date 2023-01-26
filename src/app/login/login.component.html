@@ -1,3 +1,71 @@
+
+<form #loginForm="ngForm" >
+    <div class="card-header">
+      
+    </div>
+        
+        
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" formControlName="name">
+        </div>
+        
+        <div class="form-group">
+            <label for="category">Password</label>
+            <input type="text" class="form-control" name="password" id="password" placeholder="Enter password "formControlName="category">
+        </div>
+    
+    
+    <p>
+        <button type="submit" mat-raised-button-type color="primary" (click)="onSubmit(loginForm)" [disabled]="!loginForm.valid">Login</button>
+        <button mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+        
+    </p>
+</form>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="col-lg-6 mb-5 mb-lg-0">
 <div class="card">
 <div class="card-body py-5 px-md-5">
